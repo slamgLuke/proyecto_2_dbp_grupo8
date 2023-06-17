@@ -8,12 +8,13 @@ import Navbar from './components/Navbar';
 function App() {
   return(
     <BRouter>
-      <Navbar />
-  
-      <div >
+      <Navbar/>
+      <div>
         <Routes>
-          <Route path= "/guia" Component={Guia}/>
           <Route path="/" Component={Home} />
+          <Route path="/guia" Component={Guia}/>
+          <Route path="/login" Component={Login}/>
+          <Route path="/register" Component={Register}/>
         </Routes>
       </div>
     </BRouter>

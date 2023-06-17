@@ -1,4 +1,5 @@
 # create a base sqlalchemy database instance
+from flask import Flask
 import datetime
 from dataclasses import dataclass
 from flask_sqlalchemy import SQLAlchemy
@@ -51,7 +52,7 @@ class Word(db.Model):
     length: int
 
     word = db.Column(db.String(20), primary_key=True)
-    length = db.Column(db.Integer, nullable=False, default=len(word))
+    length = db.Column(db.Integer, nullable=False, default=0)
 
     def __repr__(self):
         return f'<word {self.word}>'
@@ -93,5 +94,5 @@ def init_db():
 
 
 if __name__ == '__main__':
-    # init_db()
+    init_db()
 

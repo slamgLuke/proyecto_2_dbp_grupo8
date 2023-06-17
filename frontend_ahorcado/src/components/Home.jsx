@@ -26,7 +26,7 @@ export const Home = () => {
 
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, backgroundColor: '#000000'}}>
             <Grid container spacing={2}>
                 {/* Cuenta del usuario */}
                 <Grid item xs={12} sm={4} sx={{ marginTop: '30px' }}>
@@ -38,18 +38,8 @@ export const Home = () => {
 
                 {/* Partidas disponibles */}
                 <Grid item xs={12} sm={8} sx={{ marginTop: '30px' }}>
-                    <Box sx={{ margin: '20px' }}>
+                    <Box sx={{ margin: '30px' }}>
                         <Item>PARTIDAS DISPONIBLES</Item>
-                        <Box>
-                            <form onSubmit={handleSumit}>
-                                <TextField
-                                    required
-                                    id="outlined-required"
-                                    label="Required"
-                                    defaultValue="Hello World"
-                                />
-                            </form>
-                        </Box>
                     </Box>
                 </Grid>
             </Grid>

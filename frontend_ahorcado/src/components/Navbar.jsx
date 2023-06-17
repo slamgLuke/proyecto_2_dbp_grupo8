@@ -39,7 +39,7 @@ const NavContainer = styled.nav`
     }
   }
   padding: 4rem;
-  background-color: #508760;;
+  background-color: #000000;;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +115,7 @@ const NavContainer = styled.nav`
 `
 
 const BgDiv = styled.div`
-  background-color: #70a981;
+  background-color: #000000;
   position: absolute;
   top: -1000px;
   left: -1000px;
