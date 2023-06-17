@@ -1,8 +1,8 @@
 import React, {Fragment}from 'react';
 
-export const Guia = () => (
+export const About = () => (
     <Fragment>
-        <h1>GUIA</h1>
+        <h1>About</h1>
         <p>El juego del Ahorcado VS es un juego en el que dos jugadores compiten para adivinar una palabra antes que el otro. El jugador que adivine primero gana, pero si ambos terminan sus intentos sin adivinar, será un empate. También puedes perder si te rindes y decides no seguir jugando.</p>
         
         <p>Para empezar una partida, uno de los jugadores crea la partida y le da un nombre divertido. Después, el jugador crea una contraseña para proteger la partida y se une a ella. Ahora, la partida es visible en una lista para que el otro jugador pueda unirse.</p>

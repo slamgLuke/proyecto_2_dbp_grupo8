@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-export const Home = () => {
+export const CreateLobby = () => {
 
-    return(
+    return (
         <h1>Home</h1>
     );
 }

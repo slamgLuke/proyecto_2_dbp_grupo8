@@ -15,8 +15,10 @@ function Navbar() {
                 <h2>Ahorcados <span>VS</span></h2>
                 <div className={`links ${clicked ? 'active' : ''}`}>
                     <a onClick={handleClick} href="/">Home</a>
-                    <a onClick={handleClick} href="/guia">Guia</a>
-                    <a onClick={handleClick} href="/players">Players</a>
+                    <a onClick={handleClick} href="/login">Log_in</a>
+                    <a onClick={handleClick} href="/register">Sign_up</a>
+                    <a onClick={handleClick} href="/about">About</a>
+                    <a onClick={handleClick} href="/rules">Rules</a>
                 </div>
                 <div className='burguer'>
                     <BurguerButton clicked={clicked} handleClick={handleClick} />
@@ -39,7 +41,7 @@ const NavContainer = styled.nav`
     }
   }
   padding: 4rem;
-  background-color: #508760;;
+  background-color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,7 +64,7 @@ const NavContainer = styled.nav`
       font-size: 2rem;
       display: block;
     }
-    @media(min-width: 768px){
+    @media(min-width: 1095px){
       position: initial;
       margin: 0;
       a{
@@ -101,6 +103,7 @@ const NavContainer = styled.nav`
     left: 0;
     right: 0;
     text-align: center;
+    z-index: 2;
     a{
       font-size: 2rem;
       margin-top: 1rem;
@@ -108,20 +111,21 @@ const NavContainer = styled.nav`
     }
   }
   .burguer{
-    @media(min-width: 768px){
+    z-index:2 ;
+    @media(min-width: 1095px){
       display: none;
     }
   }
 `
 
 const BgDiv = styled.div`
-  background-color: #70a981;
+  background-color: #000000;
   position: absolute;
   top: -1000px;
   left: -1000px;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
   transition: all .6s ease ;
   
   &.active{
