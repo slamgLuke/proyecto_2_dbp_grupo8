@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typografy from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 export const Register = () => {
     
@@ -26,9 +27,17 @@ export const Register = () => {
                     ":hover": {
                         boxShadow: '10px 10px 20px #000000',
                     },
-                }}>
-                    <Typografy sx={{ fontSize: 40, padding: 3, fontWeight: 'bold', color: '#fff', textAlign: 'center' }}>
-                        Sign up</Typografy>
+                    }}>
+
+                    <Typografy sx={{fontSize: 40,
+                                    padding: 3,
+                                    fontWeight: 'bold',
+                                    color: '#fff',
+                                    textAlign: 'center'
+                        }}>
+                        Sign up
+                    </Typografy>
+
                     <TextField
                         type="text"
                         id="outlined-helperText"
@@ -58,6 +67,7 @@ export const Register = () => {
                             },
                         }}
                     />
+
                     <TextField
                         type="password"
                         id="outlined-helperText"
@@ -86,8 +96,28 @@ export const Register = () => {
                             },
                         }}
                     />
-                    <Button variant="contained" sx={{ marginTop: 3, borderRadius: 3, backgroundColor: '#1f73b7', width: '80%' }}>
-                        Sign up   </Button>
+                    
+                    <Button variant="contained" 
+                            sx={{ marginTop: 3, 
+                                borderRadius: 3, 
+                                backgroundColor: '#1f73b7', 
+                                width: '80%' }}>
+                        Sign up 
+                    </Button>
+
+                    <Typografy sx={{marginTop: 3, color: '#fff'}}> Ya tiene una cuenta?</Typografy>
+                    <Link to="/login"
+                        style={{
+                            textDecoration: 'none',
+                            width: '80%',
+                        }}>
+                        <Button variant="outlined"
+                            sx={{borderRadius: 3,
+                                width: '100%'
+                            }}>
+                            CHANGE TO LOGIN
+                        </Button>
+                    </Link>
                 </Box>
             </form>
         </Box>

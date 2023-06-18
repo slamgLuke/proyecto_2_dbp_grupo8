@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import BurguerButton from './BurguerButton'
 
+
 function Navbar() {
 
     const [clicked, setClicked] = useState(false)
@@ -15,8 +16,7 @@ function Navbar() {
                 <h2>Ahorcados <span>VS</span></h2>
                 <div className={`links ${clicked ? 'active' : ''}`}>
                     <a onClick={handleClick} href="/">Home</a>
-                    <a onClick={handleClick} href="/login">Log_in</a>
-                    <a onClick={handleClick} href="/register">Sign_up</a>
+                    <a onClick={handleClick} href="/login">Login/Signup</a>
                     <a onClick={handleClick} href="/about">About</a>
                     <a onClick={handleClick} href="/rules">Rules</a>
                 </div>
