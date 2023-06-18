@@ -10,6 +10,7 @@ import { Rules } from './components/Rules';
 import Navbar from './components/Navbar';
 
 
+
 function App() {
   return(
     <BRouter>
