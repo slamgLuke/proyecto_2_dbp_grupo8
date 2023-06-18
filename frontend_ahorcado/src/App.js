@@ -7,6 +7,7 @@ import { CreateLobby } from './components/CreateLobby';
 import {JoinLobby} from './components/JoinLobby';
 import { About } from './components/About';
 import { Rules } from './components/Rules';
+import { Game } from './components/Game';
 import Navbar from './components/Navbar';
 
 
