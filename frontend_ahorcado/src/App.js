@@ -7,6 +7,7 @@ import { CreateLobby } from './components/CreateLobby';
 import {JoinLobby} from './components/JoinLobby';
 import { About } from './components/About';
 import { Rules } from './components/Rules';
+import { Game } from './components/Game';
 import Navbar from './components/Navbar';
 import './App.css'; 
 
@@ -37,10 +38,11 @@ function App() {
           <Route path="/" Component={Home} />
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />
-          <Route path="/createlobby" Component={CreateLobby} />
-          <Route path="/joinlobby" Component={JoinLobby} />
+          <Route path="/createlobby" Component={CreateLobby}/>
+          <Route path="/joinlobby" Component={JoinLobby}/>
           <Route path= "/about" Component={About}/>
-          <Route path="/rules" Component={Rules} />          
+          <Route path="/rules" Component={Rules}/>
+          <Route path="/game/:id/:playerId" Component={Game}/>
         </Routes>
       </div>
     </BRouter>
