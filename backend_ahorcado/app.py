@@ -253,8 +253,8 @@ def get_word():
 def post_word():
     json = request.get_json()
     string = json['word'].upper()
-    len = len(string)
-    word = Word(word=string, length=len)
+    length = len(string)
+    word = Word(word=string, length=lenght)
     db.session.add(word)
     db.session.commit()
     return 'SUCCESS'

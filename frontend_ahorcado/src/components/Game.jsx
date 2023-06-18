@@ -4,7 +4,9 @@ import React, { useState, useEffect } from "react";
 // 1. get the word, guesses, and lives from the server, based on the game id and player id
 // 2. update the game state when player makes a guess
 
-function Game(id, playerId) {
+function Game(props) {
+  const { id, playerId } = props.match.params;
+
   const [game, setGame] = useState({
     word: "",
     guesses: "",
