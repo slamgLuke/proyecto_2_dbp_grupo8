@@ -24,7 +24,7 @@ class Player(db.Model):
     ties: int
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
+    username = db.Column(db.String(20), unique = True, nullable=False)
     password = db.Column(db.String(20), nullable=False)
     logged_in = db.Column(db.Boolean, nullable=False, default=False)
     wins = db.Column(db.Integer, nullable=False, default=0)
@@ -105,6 +105,10 @@ def route_player_id(id):
         return update_player_id(id)
     elif request.method == 'DELETE':
         return delete_player(id)
+    
+@app.route('/player/login', methods=['POST'])
+def route_player_login():
+    return player_login()
 
 
 @app.route('/lobby', methods=['GET', 'POST'])
@@ -164,10 +168,14 @@ def get_player():
 
 def post_player():
     json = request.get_json()
-    player = Player(username=json['username'], password=json['password'])
-    db.session.add(player)
-    db.session.commit()
-    return 'SUCCESS'
+    player = Player.query.filter_by(username=json['username']).first()
+    if player is None:
+        player = Player(username=json['username'], password=json['password'])
+        db.session.add(player)
+        db.session.commit()
+        return 'SUCCESS'
+    else:   
+        return 'FAIL'
 
 
 def get_player_id(id):
@@ -190,6 +198,18 @@ def delete_player(id):
     db.session.commit()
     return 'SUCCESS'
 
+def player_login():
+    input_player = request.get_json()
+    player = Player.query.filter_by(username=input_player['username']).first()
+    if player is not None:
+        if player.password == input_player['password']:
+            player.logged_in = True
+            db.session.commit()
+            return str(player.id)
+        else:
+            return jsonify("FAIL")
+    else:
+        return jsonify("FAIL")
 
 ####################
 # Lobby

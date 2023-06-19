@@ -10,6 +10,11 @@ function Navbar() {
         //cuando esta true lo pasa a false y vice versa
         setClicked(!clicked)
     }
+
+    const handleLogout = () => {
+        localStorage.clear();
+    };
+
     return (
         <>
             <NavContainer>
@@ -17,6 +22,7 @@ function Navbar() {
                 <div className={`links ${clicked ? 'active' : ''}`}>
                     <a onClick={handleClick} href="/">Home</a>
                     <a onClick={handleClick} href="/login">Login/Signup</a>
+                    <a onClick={handleLogout} href="/">Logout</a>
                     <a onClick={handleClick} href="/about">About</a>
                     <a onClick={handleClick} href="/rules">Rules</a>
                 </div>
