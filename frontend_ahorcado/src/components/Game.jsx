@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 // todo:
 // 1. get the word, guesses, and lives from the server, based on the game id and player id
 // 2. update the game state when player makes a guess
 
-function Game(id, playerId) {
+export const Game = () => {
+  const { id, playerId } = useParams();
+  console.log("game id", id);
+
   const [game, setGame] = useState({
     word: "",
     guesses: "",
@@ -12,38 +16,42 @@ function Game(id, playerId) {
   });
 
   useEffect(() => {
-    const url = `/game/${id}`;
+    const url = `http://localhost:5000/game/${id}`;
     fetch(url).then((res) => {
       res.json().then((data) => {
-        if (playerId === data.player1_id) {
+        if (playerId === data.player1_id.toString()) {
           setGame({
             word: data.word1,
             guesses: data.guesses1,
             lives: data.lives1,
           });
-        } else if (playerId === data.player2_id) {
+          console.log("joined as p1");
+        } else if (playerId === data.player2_id.toString()) {
           setGame({
             word: data.word2,
             guesses: data.guesses2,
             lives: data.lives2,
           });
+          console.log("joined as p2");
         }
       });
     });
-  }, []);
+  }, [id, playerId]);
 
-  // display the word ( _ if the letter has not been guessed, the letter if it has been guessed)
-  const word = game.word;
-  for (let i = 0; i < word.length; i++) {
-    if (game.guesses.indexOf(word[i]) === -1) {
-      word[i] = "_";
+  // Convert word to an array, modify it, and join it back to a string
+  const wordArray = game.word.split("");
+  for (let i = 0; i < wordArray.length; i++) {
+    if (game.guesses.indexOf(wordArray[i]) === -1) {
+      wordArray[i] = "_";
     }
   }
-  // display the guesses in a jsx list
-  const guessesList = [];
-  for (let i = 0; i < game.guesses.length; i++) {
-    guessesList.push(<li>{guesses[i]}</li>);
-  }
+  const word = wordArray.join("");
+
+  // Display the guesses in a JSX list
+  const guessesList = game.guesses.split("").map((guess) => (
+    <li key={guess}>{guess}</li>
+  ));
+    
   // display the lives (hangman image)
   // todo: display the hangman image
 
@@ -56,5 +64,3 @@ function Game(id, playerId) {
     </div>
   );
 }
-
-export default Game;
