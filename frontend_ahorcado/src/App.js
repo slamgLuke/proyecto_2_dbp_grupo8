@@ -8,6 +8,7 @@ import {JoinLobby} from './components/JoinLobby';
 import { About } from './components/About';
 import { Rules } from './components/Rules';
 import Navbar from './components/Navbar';
+import { LeaderBoard } from './components/LeaderBoard';
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/joinlobby" Component={JoinLobby} />
           <Route path= "/about" Component={About}/>
           <Route path="/rules" Component={Rules} />          
+          <Route path="/leaderboard" Component={LeaderBoard} />
         </Routes>
       </div>
     </BRouter>

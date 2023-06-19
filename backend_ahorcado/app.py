@@ -151,7 +151,19 @@ def route_word_word(word):
     if request.method == 'GET':
         return get_word_word(word)
 
-
+@app.route('/leaderboard', methods=['GET'])
+def get_leaderboard():
+    leaderboard = Player.query.order_by(Player.wins.desc()).all()
+    leaderboard_data = [
+        {
+            'user': player.username,
+            'wins': player.wins,
+            'defeats': player.defeats,
+            'gamesPlayed': player.gamesPlayed
+        }
+        for player in leaderboard
+    ]
+    return jsonify(leaderboard_data)
 # methods
 
 ####################

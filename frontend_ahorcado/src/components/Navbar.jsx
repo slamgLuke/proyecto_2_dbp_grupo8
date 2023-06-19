@@ -19,6 +19,7 @@ function Navbar() {
                     <a onClick={handleClick} href="/register">Sign_up</a>
                     <a onClick={handleClick} href="/about">About</a>
                     <a onClick={handleClick} href="/rules">Rules</a>
+                    <a onClick={handleClick} href="/leaderboard">Leaderboard</a>
                 </div>
                 <div className='burguer'>
                     <BurguerButton clicked={clicked} handleClick={handleClick} />
