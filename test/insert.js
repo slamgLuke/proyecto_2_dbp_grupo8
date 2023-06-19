@@ -1,12 +1,12 @@
-function insertPlayer() {
+function insertPlayer(usr) {
   fetch("http://localhost:5000/player", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username: "test2",
-      password: "test2",
+      username: usr,
+      password: usr,
     }),
   })
     .then((res) => {
@@ -62,6 +62,10 @@ function insertGame() {
     });
 }
 
-insertWord("TEST");
-insertWord("RUST");
+
+insertPlayer("user1");
+insertPlayer("user2");
+
+// insertWord("TEST");
+// insertWord("RUST");
 // insertGame();

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import BurguerButton from './BurguerButton'
 
 
-function Navbar() {
+export const Navbar = () => {
 
     const [clicked, setClicked] = useState(false)
     const handleClick = () => {

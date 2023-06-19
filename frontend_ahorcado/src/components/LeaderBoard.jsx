@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@material-ui/core";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 export const LeaderBoard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   useEffect(() => {
-    const fetchLeaderboard = async () => {
-      try {
-        const response = await fetch("/leaderboard");
-        const data = await response.json();
-        setLeaderboard(data.leaderboard); // Asumiendo que el formato de los datos es { "leaderboard": [...] }
-      } catch (error) {
-        console.error("Error fetching leaderboard:", error);
-      }
-    };
-
-    fetchLeaderboard();
+    const url = "http://localhost:5000/leaderboard";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setLeaderboard(data);
+      });
   }, []);
 
   const handlePlayerClick = (player) => {
@@ -24,7 +25,10 @@ export const LeaderBoard = () => {
   };
 
   return (
-    <div className="Board" style={{ display: "flex", justifyContent: "center" }}>
+    <div
+      className="Board"
+      style={{ display: "flex", justifyContent: "center" }}
+    >
       <div>
         <h1 className="LeaderBoard" style={headingStyle}>
           LeaderBoard
@@ -42,7 +46,10 @@ export const LeaderBoard = () => {
             </TableHead>
             <TableBody>
               {leaderboard.map((player, index) => (
-                <TableRow key={player.id} onClick={() => handlePlayerClick(player)}>
+                <TableRow
+                  key={player.id}
+                  onClick={() => handlePlayerClick(player)}
+                >
                   <TableCell style={cellStyle}>{player.username}</TableCell>
                   <TableCell style={cellStyle}>{player.wins}</TableCell>
                   <TableCell style={cellStyle}>{player.defeats}</TableCell>

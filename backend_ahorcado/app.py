@@ -160,14 +160,16 @@ def get_leaderboard():
     leaderboard = Player.query.order_by(Player.wins.desc()).all()
     leaderboard_data = [
         {
-            'user': player.username,
+            'username': player.username,
             'wins': player.wins,
             'defeats': player.defeats,
-            'gamesPlayed': player.gamesPlayed
+            'gamesPlayed': player.wins + player.defeats + player.ties,
         }
         for player in leaderboard
     ]
     return jsonify(leaderboard_data)
+
+
 # methods
 
 ####################
@@ -286,7 +288,7 @@ def post_word():
     json = request.get_json()
     string = json['word'].upper()
     length = len(string)
-    word = Word(word=string, length=lenght)
+    word = Word(word=string, length=length)
     db.session.add(word)
     db.session.commit()
     return 'SUCCESS'
