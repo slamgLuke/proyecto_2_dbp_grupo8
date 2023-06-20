@@ -21,7 +21,7 @@ export const JoinLobby = () => {
     useEffect(() => {
         const loggedInUser = localStorage.getItem("user");
         if (!loggedInUser) {
-        window.location.href = "/login";
+            window.location.href = "/login";
         }
     }, []);
     
