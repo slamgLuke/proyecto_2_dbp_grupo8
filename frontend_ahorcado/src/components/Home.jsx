@@ -5,6 +5,19 @@ import Grid from '@mui/material/Grid';
 import Typografy from '@mui/material/Typography';
 
 export const Home = () => {
+
+    const handleCreateLobby = () => {
+        window.location.href = '/createlobby';
+    }
+
+    const handleJoinLobby = () => {
+        window.location.href = '/joinlobby';
+    }
+
+    const handleLeaderboard = () => {
+        window.location.href = '/leaderboard';
+    }
+
     return (
         <Box sx={{ display: 'flex',
             flexDirection: 'column',
@@ -19,17 +32,17 @@ export const Home = () => {
             <img src={require("../images/view_home.jpg")} alt="Ahoracados VS" style={{maxWidth: '100%', margin: 'auto'}} />
             <Grid container spacing={2} sx={{ alignItems: 'center', justifyContent: 'center', marginTop: 3 }}>
                 <Grid item xs={12} sm={6}>
-                    <Button variant="contained" sx={{ borderRadius: 3, backgroundColor: '#212F3C', width: '100%' }}>
+                    <Button onClick={handleCreateLobby} variant="contained" sx={{ borderRadius: 3, backgroundColor: '#212F3C', width: '100%' }}>
                         Create Lobby
                     </Button>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Button variant="contained" sx={{ borderRadius: 3, backgroundColor: '#212F3C', width: '100%' }}>
+                    <Button onClick={handleJoinLobby} variant="contained" sx={{ borderRadius: 3, backgroundColor: '#212F3C', width: '100%' }}>
                         Join Lobby
                     </Button>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Button variant="contained" sx={{ borderRadius: 3, backgroundColor: '#212F3C', width: '100%' }}>
+                    <Button onClick={handleLeaderboard} variant="contained" sx={{ borderRadius: 3, backgroundColor: '#212F3C', width: '100%' }}>
                         Leaderboard
                     </Button>
                 </Grid>

@@ -37,10 +37,12 @@ class Lobby(db.Model):
     id: int
     name: str
     player_id: int
+    active: bool
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False, default=f'lobby {id}')
     player_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
+    active = db.Column(db.Boolean, nullable=False, default=True)
 
     def __repr__(self):
         return f'<lobby {self.id}>'
