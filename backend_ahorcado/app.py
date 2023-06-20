@@ -285,6 +285,7 @@ def update_game_id(id):
     json = request.get_json()
     game = Game.query.get(id)
     game.outcome = json['outcome']
+    db.session.commit()
     return 'SUCCESS'
 
 
