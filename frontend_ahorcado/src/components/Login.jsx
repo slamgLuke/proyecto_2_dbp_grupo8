@@ -91,6 +91,7 @@ export const Login = () => {
                             width: '80%',
                             '& label': {
                                 color: 'white',
+                                zIndex: 0,
                             },
                             '& .MuiOutlinedInput-root': {
                                 '& fieldset': {
@@ -122,6 +123,7 @@ export const Login = () => {
                             width: '80%',
                             '& label': {
                                 color: 'white',
+                                zIndex: 0,
                             },
                             '& .MuiOutlinedInput-root': {
                                 '& fieldset': {

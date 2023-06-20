@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import BurguerButton from './BurguerButton'
+import {Link} from 'react-router-dom'
 
 
 function Navbar() {
 
     const [clicked, setClicked] = useState(false)
     const handleClick = () => {
-        //cuando esta true lo pasa a false y vice versa
+        //cuando esta true lo pasa p false y vice versa
         setClicked(!clicked)
     }
 
@@ -20,11 +21,35 @@ function Navbar() {
             <NavContainer>
                 <h2>Ahorcados <span>VS</span></h2>
                 <div className={`links ${clicked ? 'active' : ''}`}>
-                    <a onClick={handleClick} href="/">Home</a>
-                    <a onClick={handleClick} href="/login">Login/Signup</a>
-                    <a onClick={handleLogout} href="/">Logout</a>
-                    <a onClick={handleClick} href="/about">About</a>
-                    <a onClick={handleClick} href="/rules">Rules</a>
+                  <Link to='/' style={{
+                    textDecoration: 'none',
+                    }}>
+                    <p>Home</p>
+                  </Link>
+
+                  <Link to='/login' style={{
+                    textDecoration: 'none',
+                  }}>
+                    <p>Login/Signup</p>
+                  </Link>
+
+                  <Link to='/' style={{
+                    textDecoration: 'none',
+                  }}>
+                    <p onClick={handleLogout}>Logout</p>
+                  </Link>
+
+                  <Link to='/about' style={{
+                    textDecoration: 'none',
+                  }}>
+                    <p>About</p>
+                  </Link>
+
+                  <Link to='/rules' style={{
+                    textDecoration: 'none',
+                  }}>
+                    <p>Rules</p>
+                  </Link>  
                 </div>
                 <div className='burguer'>
                     <BurguerButton clicked={clicked} handleClick={handleClick} />
@@ -51,7 +76,7 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  a{
+  p{
     color: white;
     text-decoration: none;
     margin-right: 1rem;
@@ -65,7 +90,7 @@ const NavContainer = styled.nav`
     margin-right: auto;
     text-align: center;
     transition: all .5s ease;
-    a{
+    p{
       color: white;
       font-size: 2rem;
       display: block;
@@ -73,7 +98,7 @@ const NavContainer = styled.nav`
     @media(min-width: 1095px){
       position: initial;
       margin: 0;
-      a{
+      p{
         font-size: 1rem;
         color: white;
         display: inline;
@@ -82,7 +107,7 @@ const NavContainer = styled.nav`
     }
 
     @media(min-width: 1050px){
-        a{
+        p{
             font-size: 1.5rem;
         }
     }
@@ -110,7 +135,7 @@ const NavContainer = styled.nav`
     right: 0;
     text-align: center;
     z-index: 2;
-    a{
+    p{
       font-size: 2rem;
       margin-top: 1rem;
       color: white;
