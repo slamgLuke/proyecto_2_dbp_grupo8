@@ -4,7 +4,7 @@ import BurguerButton from './BurguerButton'
 import {Link} from 'react-router-dom'
 
 
-function Navbar() {
+export const Navbar = () => {
 
     const [clicked, setClicked] = useState(false)
     const handleClick = () => {
@@ -49,6 +49,12 @@ function Navbar() {
                     textDecoration: 'none',
                   }}>
                     <p>Rules</p>
+                  </Link>  
+
+                  <Link to='/leaderboard' style={{
+                    textDecoration: 'none',
+                  }}>
+                    <p>Leaderboard</p>
                   </Link>  
                 </div>
                 <div className='burguer'>

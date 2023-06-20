@@ -35,13 +35,12 @@ export const Register = () => {
 
         //promesa que espera la respuesta del backend
         const data = await response.text();
-        if (data === 'SUCCESS'){
+        if (data === 'SUCCESS') {
             alert("User created successfully");
-            // Redirigir a otra ruta utilizando history.push
             window.location.href = '/login';      
         }
-        else{
-            alert("User already exists");
+        else {
+            alert("Username already exists");
         }
     };
 

@@ -1,12 +1,12 @@
-function insertPlayer() {
+function insertPlayer(usr) {
   fetch("http://localhost:5000/player", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username: "test2",
-      password: "test2",
+      username: usr,
+      password: usr,
     }),
   })
     .then((res) => {
@@ -20,23 +20,23 @@ function insertPlayer() {
 }
 
 function insertWord(str) {
-    fetch("http://localhost:5000/word", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-        word: str,
-        }),
+  fetch("http://localhost:5000/word", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      word: str,
+    }),
+  })
+    .then((res) => {
+      return res.text();
     })
-        .then((res) => {
-        return res.text();
-        })
-        .then((data) => {
-        if (data === "SUCCESS") {
-            console.log("success");
-        }
-        });
+    .then((data) => {
+      if (data === "SUCCESS") {
+        console.log("success");
+      }
+    });
 }
 
 function insertGame() {
@@ -62,6 +62,31 @@ function insertGame() {
     });
 }
 
-insertWord("TEST");
-insertWord("RUST");
+function insertLobby(str) {
+  fetch("http://localhost:5000/lobby", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      player_id: 1,
+      name: str,
+    }),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
+}
+
+// insertPlayer("user1");
+// insertPlayer("user2");
+
+// insertWord("TEST");
+// insertWord("RUST");
 // insertGame();
+
+insertLobby("lobbyfiller");
+insertLobby("lobbyfiller2");

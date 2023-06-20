@@ -24,7 +24,7 @@ class Player(db.Model):
     ties: int
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique = True, nullable=False)
+    username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(20), nullable=False)
     logged_in = db.Column(db.Boolean, nullable=False, default=False)
     wins = db.Column(db.Integer, nullable=False, default=0)
@@ -39,10 +39,12 @@ class Lobby(db.Model):
     id: int
     name: str
     player_id: int
+    active: bool
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False, default=f'lobby {id}')
     player_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
+    active = db.Column(db.Boolean, nullable=False, default=True)
 
     def __repr__(self):
         return f'<lobby {self.id}>'
@@ -142,6 +144,10 @@ def route_game_id(id):
     elif request.method == 'DELETE':
         return delete_game(id)
 
+@app.route('/game/<id>/guess', methods=['PUT'])
+def route_game_id_guess(id):
+    return update_game_id_guess(id)
+
 
 @app.route('/word', methods=['GET', 'POST'])
 def route_word():
@@ -154,6 +160,20 @@ def route_word():
 def route_word_word(word):
     if request.method == 'GET':
         return get_word_word(word)
+
+@app.route('/leaderboard', methods=['GET'])
+def get_leaderboard():
+    leaderboard = Player.query.order_by(Player.wins.desc()).all()
+    leaderboard_data = [
+        {
+            'username': player.username,
+            'wins': player.wins,
+            'defeats': player.defeats,
+            'gamesPlayed': player.wins + player.defeats + player.ties,
+        }
+        for player in leaderboard
+    ]
+    return jsonify(leaderboard_data)
 
 
 # methods
@@ -186,8 +206,9 @@ def get_player_id(id):
 def update_player_id(id):
     json = request.get_json()
     player = Player.query.get(id)
-    player.username = json['username']
-    player.password = json['password']
+    player.wins += json['wins']
+    player.defeats += json['defeats']
+    player.ties += json['ties']
     db.session.commit()
     return 'SUCCESS'
 
@@ -215,7 +236,7 @@ def player_login():
 # Lobby
 ####################
 def get_lobby():
-    lobby = Lobby.query.all()
+    lobby = Lobby.query.filter_by(active=True).all()
     return jsonify(lobby)
 
 
@@ -224,7 +245,7 @@ def post_lobby():
     lobby = Lobby(name=json['name'], player_id=json['player_id'])
     db.session.add(lobby)
     db.session.commit()
-    return 'SUCCESS'
+    return {'id': lobby.id}
 
 
 def get_lobby_id(id):
@@ -234,7 +255,7 @@ def get_lobby_id(id):
 
 def delete_lobby(id):
     lobby = Lobby.query.get(id)
-    db.session.delete(lobby)
+    lobby.active = False
     db.session.commit()
     return 'SUCCESS'
 
@@ -249,7 +270,7 @@ def get_game():
 
 def post_game():
     json = request.get_json()
-    game = Game(player1_id=json['player1_id'], player2_id=json['player2_id'], word1=json['word1'], word2=json['word2'])
+    game = Game(id=json['id'], player1_id=json['player1_id'], player2_id=json['player2_id'], word1=json['word1'], word2=json['word2'])
     db.session.add(game)
     db.session.commit()
     return 'SUCCESS'
@@ -259,6 +280,33 @@ def get_game_id(id):
     game = Game.query.get(id)
     return jsonify(game)
 
+
+def update_game_id(id):
+    json = request.get_json()
+    game = Game.query.get(id)
+    game.outcome = json['outcome']
+    db.session.commit()
+    return 'SUCCESS'
+
+
+def update_game_id_guess(id):
+    json = request.get_json()
+    game = Game.query.get(id)
+    # check if guess1 or guess2 was sent
+    if 'guesses1' in json:
+        game.guesses1 = json['guesses1']
+        if game.guesses1[-1] not in game.word1:
+            game.lives1 -= 1
+        db.session.commit()
+        return 'SUCCESS'
+    elif 'guesses2' in json:
+        game.guesses2 = json['guesses2']
+        if game.guesses2[-1] not in game.word2:
+            game.lives2 -= 1
+        db.session.commit()
+        return 'SUCCESS'
+    else:
+        return 'FAIL'
 
 
 
@@ -274,7 +322,7 @@ def post_word():
     json = request.get_json()
     string = json['word'].upper()
     length = len(string)
-    word = Word(word=string, length=lenght)
+    word = Word(word=string, length=length)
     db.session.add(word)
     db.session.commit()
     return 'SUCCESS'
