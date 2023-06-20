@@ -270,7 +270,7 @@ def get_game():
 
 def post_game():
     json = request.get_json()
-    game = Game(player1_id=json['player1_id'], player2_id=json['player2_id'], word1=json['word1'], word2=json['word2'])
+    game = Game(id=json['id'], player1_id=json['player1_id'], player2_id=json['player2_id'], word1=json['word1'], word2=json['word2'])
     db.session.add(game)
     db.session.commit()
     return 'SUCCESS'
@@ -295,13 +295,13 @@ def update_game_id_guess(id):
     # check if guess1 or guess2 was sent
     if 'guesses1' in json:
         game.guesses1 = json['guesses1']
-        if game.guesses1 not in game.word2:
+        if game.guesses1[-1] not in game.word1:
             game.lives1 -= 1
         db.session.commit()
         return 'SUCCESS'
     elif 'guesses2' in json:
         game.guesses2 = json['guesses2']
-        if game.guesses2 not in game.word2:
+        if game.guesses2[-1] not in game.word2:
             game.lives2 -= 1
         db.session.commit()
         return 'SUCCESS'

@@ -36,8 +36,8 @@ export const JoinLobby = () => {
         });
     }, []);
 
-    const disableLobby = (lobby_id) => {
-        fetch('http://localhost:5000/lobby/' + lobby_id, {
+    const disableLobby = async (lobby_id) => {
+        await fetch('http://localhost:5000/lobby/' + lobby_id, {
             method: 'DELETE',
         })
     }
