@@ -7,6 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Box from "@mui/material/Box";
 
 
 // todo:
@@ -90,7 +91,17 @@ export const JoinLobby = () => {
 
     // material ui table
     return (
-        <div>
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: 800,
+            margin: 'auto',
+            marginTop: 5,
+            padding: 3,
+            flexShrink: 1,
+        }}>
             <h1>Join a Lobby</h1>
             <TableContainer>
                 <Table>
@@ -114,6 +125,7 @@ export const JoinLobby = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+
+        </Box>
     );
 }

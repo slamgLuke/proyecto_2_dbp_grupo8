@@ -1,20 +1,89 @@
-import React, {Fragment}from 'react';
+import React from 'react';
+import Typografy from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-export const About = () => (
-    <Fragment>
-        <h1>About</h1>
-        <p>El juego del Ahorcado VS es un juego en el que dos jugadores compiten para adivinar una palabra antes que el otro. El jugador que adivine primero gana, pero si ambos terminan sus intentos sin adivinar, será un empate. También puedes perder si te rindes y decides no seguir jugando.</p>
-        
-        <p>Para empezar una partida, uno de los jugadores crea la partida y le da un nombre divertido. Después, el jugador crea una contraseña para proteger la partida y se une a ella. Ahora, la partida es visible en una lista para que el otro jugador pueda unirse.</p>
+export const About = () => {
+    return (
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: 800,
+            margin: 'auto',
+            marginTop: 5,
+            padding: 3,
+            flexShrink: 1,
+        }}>
+            <Typografy sx={{
+                fontWeight: 'bold',
+                fontSize: 'clamp(1.2rem, 2.4vw, 3rem)',
+                fontFamily: 'fantasy',
+                textAlign: 'center',
+                flexShrink: 1,
+                marginTop: 3,
+                color: '#1B2631'
+            }}>
+                Ahorcado VS
+            </Typografy>
 
-        <p>Cuando el segundo jugador se conecta al juego y ambos están listos para comenzar, presionan el botón "listo". ¡Y así empieza la diversión!</p>
+            <Typografy sx={{
+                fontSize: 'clamp(1rem, 2vw, 2rem)',
+                fontFamily: 'fantasy',
+                textAlign: 'justify',
+                flexShrink: 1,
+                color: '#1B2631',
+                marginBottom: '1rem', 
+            }}>
+                "Bienvenidos al juego del Ahorcado VS, una emocionante competencia en la que dos jugadores se enfrentan para adivinar una palabra antes que su oponente. Conviértete en el campeón del Ahorcado demostrando tus habilidades de deducción y agilidad mental.
+            </Typografy>
 
-        <p>El objetivo del juego es adivinar una palabra secreta. Para hacerlo, los jugadores se turnan para decir letras del abecedario. Si la letra está en la palabra, se revela en su posición correcta. Si no está, se dibuja una parte del cuerpo de un personaje llamado el ahorcado.</p>
+            <Typografy sx={{
+                fontSize: 'clamp(1rem, 2vw, 2rem)',
+                fontFamily: 'fantasy',
+                textAlign: 'justify',
+                flexShrink: 1,
+                color: '#1B2631',
+                marginBottom: '1rem',
+            }}>
+                En este adictivo juego, los participanter dicen las letras del abecedario e intentan descubrir si están presentes en la palabra secreta en paralelo. Cada vez que una letra acertada se revela en su posición correcta, pero si se equivocan, una parte del cuerpo del personaje del ahorcado aparecerá. ¡Ten cuidado! Tendrás que usar tu ingenio y estrategia para evitar que el ahorcado se complete antes de adivinar la palabra o que tu oponente termine.
+            </Typografy>
 
-        <p>Ambos jugadores siguen adivinando letras hasta que alguien descubra la palabra o hasta que ambos hayan usado todos sus intentos.Después de cada partida, los resultados se guardan en un contador que lleva la cuenta de cuántas veces cada jugador ha ganado, perdido o empatado.</p >
-        
-        <p>¡Diviértete jugando al Ahorcado VS y trata de adivinar las palabras antes que tu oponente!</p>
-    </Fragment>
-)
+            <Typografy sx={{
+                fontSize: 'clamp(1rem, 2vw, 2rem)',
+                fontFamily: 'fantasy',
+                textAlign: 'justify',
+                flexShrink: 1,
+                color: '#1B2631',
+                marginBottom: '1rem',
+            }}> 
+                La diversión comienza cuando uno de los jugadores crea una partida y le da un nombre divertido. A continuación, se crea una contraseña para proteger la partida y el otro jugador se une a ella. Ambos deben estar listos y presionar el botón "listo" para comenzar la competencia.
+            </Typografy>
 
+            <Typografy sx={{
+                fontSize: 'clamp(1rem, 2vw, 2rem)',
+                fontFamily: 'fantasy',
+                textAlign: 'justify',
+                flexShrink: 1,
+                color: '#1B2631',
+                marginBottom: '1rem',
+            }}>
+                El juego del Ahorcado VS guarda un registro de los resultados, contabilizando cuántas veces cada jugador ha ganado, perdido o empatado. ¿Serás capaz de alcanzar la cima de la tabla de posiciones y convertirte en el maestro del Ahorcado?
+            </Typografy>
+
+            <Typografy sx={{
+                fontSize: 'clamp(1rem, 2vw, 2rem)',
+                fontFamily: 'fantasy',
+                textAlign: 'justify',
+                flexShrink: 1,
+                color: '#1B2631',
+                marginBottom: '1rem',
+            }}>
+                ¡Sumérgete en esta emocionante experiencia y desafía a tus amigos a adivinar las palabras más difíciles antes que tú! ¡El Ahorcado VS te espera para poner a prueba tu vocabulario y destreza mental!"
+            </Typografy>
+
+        </Box>
+    );
+
+}
 
