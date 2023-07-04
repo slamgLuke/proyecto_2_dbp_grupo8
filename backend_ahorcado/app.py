@@ -226,11 +226,11 @@ def player_login():
         if player.password == input_player['password']:
             player.logged_in = True
             db.session.commit()
-            return jsonify(player.id)
+            return jsonify('{"id": "' + str(player.id) + '"}')
         else:
-            return jsonify("FAIL")
+            return jsonify('{"status": "FAIL"}')
     else:
-        return jsonify("FAIL")
+        return jsonify('{"status": "FAIL"}')
 
 ####################
 # Lobby
