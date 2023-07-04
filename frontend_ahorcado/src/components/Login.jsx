@@ -34,7 +34,7 @@ export const Login = () => {
             }),
         })
         //promesa que espera la respuesta del backend
-        const data = await response.json();
+        const data = await response.text();
         
         //si el backend responde el ID del usuario y se guarda en el local storage en caso de ser existoso
         //caso contrario retorna FAIL

@@ -228,9 +228,9 @@ def player_login():
             db.session.commit()
             return str(player.id)
         else:
-            return jsonify("FAIL")
+            return str("FAIL")
     else:
-        return jsonify("FAIL")
+        return str("FAIL")
 
 ####################
 # Lobby
