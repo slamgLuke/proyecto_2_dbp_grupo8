@@ -34,12 +34,12 @@ export const Login = () => {
             }),
         })
         //promesa que espera la respuesta del backend
-        const data = await response.text();
+        const data = await response.json();
         
         //si el backend responde el ID del usuario y se guarda en el local storage en caso de ser existoso
         //caso contrario retorna FAIL
-        if (data !== 'FAIL') {
-            localStorage.setItem('userID', data);
+        if (data.response !== 'FAIL') {
+            localStorage.setItem('userID', data.response);
             localStorage.setItem('user', true);
             alert("Login successful");
             // Redirigir a otra ruta utilizando history.push
