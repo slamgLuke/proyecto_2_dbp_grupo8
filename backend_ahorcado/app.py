@@ -5,12 +5,8 @@ from flask_cors import CORS
 from flask_caching import Cache
 import datetime
 
-# config
-cache = Cache(config={
-    "CACHE_TYPE": "SimpleCache"  
-    })
+
 app = Flask(__name__)
-cache.init_app(app)
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -169,7 +165,6 @@ def route_word_word(word):
         return get_word_word(word)
 
 @app.route('/leaderboard', methods=['GET'])
-@cache.cached(timeout=120)  # Caché durante 1 minuto
 def get_leaderboard():
     leaderboard = Player.query.order_by(Player.wins.desc()).all()
     leaderboard_data = [
