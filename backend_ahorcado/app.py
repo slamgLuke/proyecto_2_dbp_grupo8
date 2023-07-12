@@ -157,7 +157,6 @@ def route_game_id_guess(id):
 
 
 @app.route('/word', methods=['GET', 'POST'])
-@cache.cached(timeout=10)  # Caché durante 1 minuto
 def route_word():
     if request.method == 'GET':
         return get_word()
