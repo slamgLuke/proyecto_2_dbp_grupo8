@@ -12,7 +12,7 @@ export const LeaderBoard = () => {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   useEffect(() => {
-    const url = "http://localhost:5000/leaderboard";
+    const url = "https://davidherencia.pythonanywhere.com//leaderboard";
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

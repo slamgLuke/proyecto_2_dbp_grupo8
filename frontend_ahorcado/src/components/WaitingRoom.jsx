@@ -10,7 +10,7 @@ export const WaitingRoom = () => {
     const pollGameStatus = async () => {
       try {
         while (!gameCreated) {
-          const response = await fetch(`http://localhost:5000/game/${id}`);
+          const response = await fetch(`https://davidherencia.pythonanywhere.com//game/${id}`);
           const gameData = await response.json();
           // check if not null
           if (gameData !== null) {

@@ -9,7 +9,7 @@ export const AlphabetButtonArray = (props) => {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const handleLetterClick = async (letter) => {
-    const response = await fetch(`http://localhost:5000/game/${id}`);
+    const response = await fetch(`https://davidherencia.pythonanywhere.com//game/${id}`);
     const gameData = await response.json();
 
     let label = "";
@@ -22,7 +22,7 @@ export const AlphabetButtonArray = (props) => {
         newGuesses = gameData.guesses2 + letter
     }
     console.log(JSON.stringify({ [label]: newGuesses }));
-    fetch(`http://localhost:5000/game/${id}/guess`, {
+    fetch(`https://davidherencia.pythonanywhere.com//game/${id}/guess`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

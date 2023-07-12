@@ -19,7 +19,7 @@ export const CreateLobby = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(lobbyName);
-        fetch('http://localhost:5000/lobby', {
+        fetch('https://davidherencia.pythonanywhere.com//lobby', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

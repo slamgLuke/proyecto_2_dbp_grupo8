@@ -26,7 +26,7 @@ const updatePlayer = async (id, num, outcome) => {
             newWins = 1;
         }
     }
-    const response = await fetch(`http://localhost:5000/player/${id}`, {
+    const response = await fetch(`https://davidherencia.pythonanywhere.com//player/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const updatePlayer = async (id, num, outcome) => {
 
 const updateOutcome = async (data, outcome) => {
   console.log("updating outcome", data, outcome);
-  const response = await fetch(`http://localhost:5000/game/${data.id}`, {
+  const response = await fetch(`https://davidherencia.pythonanywhere.com//game/${data.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export const Game = () => {
   });
 
   useEffect(() => {
-    const url = `http://localhost:5000/game/${id}`;
+    const url = `https://davidherencia.pythonanywhere.com//game/${id}`;
     fetch(url).then((res) => {
       res.json().then((data) => {
         if (

@@ -29,7 +29,7 @@ export const JoinLobby = () => {
     // get lobbies
     const [lobbies, setLobbies] = useState([]);
     useEffect(() => {
-        const url = "http://localhost:5000/lobby";
+        const url = "https://davidherencia.pythonanywhere.com//lobby";
         fetch(url).then((res) => {
             res.json().then((data) => {
                 setLobbies(data);
@@ -38,7 +38,7 @@ export const JoinLobby = () => {
     }, []);
 
     const disableLobby = async (lobby_id) => {
-        await fetch('http://localhost:5000/lobby/' + lobby_id, {
+        await fetch('https://davidherencia.pythonanywhere.com//lobby/' + lobby_id, {
             method: 'DELETE',
         })
     }
@@ -46,7 +46,7 @@ export const JoinLobby = () => {
     // function to handle join lobby button
     const handleJoin = async (lobby_id) => {
         // get lobby info
-        const lobbyResponse = await fetch('http://localhost:5000/lobby/' + lobby_id)
+        const lobbyResponse = await fetch('https://davidherencia.pythonanywhere.com//lobby/' + lobby_id)
         const lobbyData = await lobbyResponse.json();
         if (lobbyData.active === 0) {
             alert('Attempting to access inactive lobby');
@@ -54,7 +54,7 @@ export const JoinLobby = () => {
         }
 
         // get 2 random words
-        const wordResponse = await fetch('http://localhost:5000/word')
+        const wordResponse = await fetch('https://davidherencia.pythonanywhere.com//word')
         const wordData = await wordResponse.json();
         if (wordData.length < 2) {
             alert('Not enough words in database');
@@ -66,7 +66,7 @@ export const JoinLobby = () => {
         const word2 = wordData[Math.floor(Math.random() * wordData.length)].word;
         console.log(word1, word2);
 
-        fetch('http://localhost:5000/game', {
+        fetch('https://davidherencia.pythonanywhere.com//game', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
